@@ -3,7 +3,7 @@ import './App.css'
 
 
 function App() {
-  
+
   const [coinResult, setCoinResult] = useState(0)
   const [heads, setHeads] = useState(0)
   const [tails, setTails] = useState(0)
@@ -11,35 +11,30 @@ function App() {
   const updateTally = (result: number) => {
     setCoinResult(result)
 
-    if (result == 0) 
-    {
+    if (result == 0) {
       setHeads((heads) => heads + 1)
-    } 
-    else 
-    {
+    }
+    else {
       setTails((tails) => tails + 1)
     }
   }
 
   return (
     <>
-    <h1>Coin Toss</h1>
+      <h1>Coin Toss</h1>
       <div className="card">
-        <button onClick={() => updateTally(Math.floor(Math.random() * 2)) }>
+        <button onClick={() => updateTally(Math.floor(Math.random() * 2))}>
           Toss the coin.
         </button>
         <p>
-          {coinResult}
+          The coin landed on: <span className="highlight-txt">{coinResult ? "Tails" : "Heads"}</span>
         </p>
         <p>
-          Heads has landed {heads} times
+          Heads has landed <span className="highlight-txt">{heads}</span> times
           <br></br>
-          Tails has landed {tails} times
+          Tails has landed <span className="highlight-txt">{tails}</span> times
         </p>
       </div>
-      <p className="footer-msg">
-        Press the button to flip the coin.
-      </p>
     </>
   )
 }
